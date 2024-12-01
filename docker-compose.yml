@@ -1,0 +1,21 @@
+services:
+  frontend:
+    build:
+      context: ./docker
+      dockerfile: frontend.Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - type: bind
+        source: "./app"
+        target: "/opt/app"
+  backend:
+    build:
+      context: ./docker
+      dockerfile: backend.Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - type: bind
+        source: "./app"
+        target: "/opt/app"
