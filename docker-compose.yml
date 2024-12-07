@@ -1,21 +1,24 @@
 services:
   frontend:
     build:
-      context: ./docker
-      dockerfile: frontend.Dockerfile
+      context: ./app/frontend/
+      dockerfile: Dockerfile
+      target: develop
     tty: true
     stdin_open: true
+    ports:
+      - "3000:3000"
     volumes:
       - type: bind
-        source: "./app"
-        target: "/opt/app"
+        source: "./app/frontend/"
+        target: "/app"
   backend:
     build:
-      context: ./docker
-      dockerfile: backend.Dockerfile
+      context: ./app/backend/
+      dockerfile: Dockerfile
     tty: true
     stdin_open: true
     volumes:
       - type: bind
-        source: "./app"
-        target: "/opt/app"
+        source: "./app/backend/"
+        target: "/app"
