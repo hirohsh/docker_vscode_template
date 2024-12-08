@@ -16,6 +16,7 @@ services:
     build:
       context: ./app/backend/
       dockerfile: Dockerfile
+      target: develop
     tty: true
     stdin_open: true
     volumes:
