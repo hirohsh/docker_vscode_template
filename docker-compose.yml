@@ -31,6 +31,16 @@ services:
       - "5432:5432"
     volumes:
       - data_store:/var/lib/postgresql/data
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/logs:/var/log/nginx
+    environment:
+      - SERVER_NAME=localhost
 volumes:
   data_store:
     name: data_store
