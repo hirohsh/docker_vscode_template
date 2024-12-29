@@ -6,12 +6,10 @@ services:
       target: develop
     tty: true
     stdin_open: true
-    ports:
-      - "3000:3000"
     volumes:
       - type: bind
-        source: "./app/frontend/"
-        target: "/app"
+        source: './app/frontend/'
+        target: '/app'
   backend:
     build:
       context: ./app/backend/
@@ -21,14 +19,14 @@ services:
     stdin_open: true
     volumes:
       - type: bind
-        source: "./app/backend/"
-        target: "/app"
+        source: './app/backend/'
+        target: '/app'
   database:
     build:
       context: ./database
       dockerfile: Dockerfile
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - data_store:/var/lib/postgresql/data
   nginx:
@@ -36,7 +34,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
       - ./nginx/logs:/var/log/nginx
     environment:
